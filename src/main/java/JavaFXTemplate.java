@@ -15,8 +15,8 @@ import javafx.stage.Stage;
 
 public class JavaFXTemplate extends Application {
 	
-	UserInterface UI = new UserInterface();
-	int [] puzzlearray = UI.getPuzzle();
+//	UserInterface UI = new UserInterface();
+	int [] puzzlearray;
 	
 	Button startButton = new Button("Start");
 	public static void main(String[] args) {
@@ -54,6 +54,8 @@ public class JavaFXTemplate extends Application {
 		//Size of Grid 4 x 4 = 16
 		GameButton [][]Board = new GameButton[4][4];
 		GameButton b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16;
+		
+
 		
 		//Initalize Buttons with ID's to go in Board
 		b1 = new GameButton(1); b2 = new GameButton(2); b3 = new GameButton(3); b4 = new GameButton(4);
@@ -131,27 +133,50 @@ public class JavaFXTemplate extends Application {
 //		Board[3][2].setText(Integer.toBinaryString(Board[3][2].value));
 //		Board[3][3].setText(Integer.toBinaryString(Board[3][3].value));
 
-		
-		
-//		Scene scene = new Scene(grid, 700,700);
-//		primaryStage.setScene(scene);
-//		primaryStage.show();
-		
-//		startButton.setOnAction(event->{
-			
-			
-			
-			b1.setText(Integer.toString(puzzlearray[0]));
 
+		
+		Scene scene = new Scene(grid, 700,700);
+		primaryStage.setScene(scene);
+		primaryStage.show();
+		
+		Thread t = new Thread(()->{
+			UserInterface UI = new UserInterface();
+			puzzlearray = UI.getPuzzle();
+			b1.setText(Integer.toString(puzzlearray[0]));
+			b2.setText(Integer.toString(puzzlearray[1]));
+			b3.setText(Integer.toString(puzzlearray[2]));
+			b4.setText(Integer.toString(puzzlearray[3]));
+			b5.setText(Integer.toString(puzzlearray[3]));
+			b6.setText(Integer.toString(puzzlearray[4]));
+			b7.setText(Integer.toString(puzzlearray[5]));
+			b8.setText(Integer.toString(puzzlearray[6]));
+			b9.setText(Integer.toString(puzzlearray[7]));
+			b10.setText(Integer.toString(puzzlearray[8]));
+			b11.setText(Integer.toString(puzzlearray[9]));
+			b12.setText(Integer.toString(puzzlearray[10]));
+			b13.setText(Integer.toString(puzzlearray[11]));
+			b14.setText(Integer.toString(puzzlearray[12]));
+			b15.setText(Integer.toString(puzzlearray[13]));
+			b16.setText(Integer.toString(puzzlearray[14]));
+		});
+		t.start();
+		
+//		Thread t = new Thread(()-> {A_IDS_A_15solver ids = new A_IDS_A_15solver();});
+//		t.start();
+		
+		startButton.setOnAction(event->{
+			
+// 0 14 13 12 15 9 5 8 11 7 4 1 3 10 6 2			
+			
 			
 			Scene scene2 = new Scene(gPane,700,700);
 			primaryStage.setScene(scene2);
 			primaryStage.show();
-//		});
+			
+		});
 
 		
-		Thread t = new Thread(()-> {A_IDS_A_15solver ids = new A_IDS_A_15solver();});
-		t.start();
+
 
 	}
 
