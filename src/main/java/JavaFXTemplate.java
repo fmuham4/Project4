@@ -19,6 +19,11 @@ public class JavaFXTemplate extends Application {
 	int [] puzzlearray;
 	
 	Button startButton = new Button("Start");
+    Button heu1 = new Button("Heuristic One");
+    Button heu2 = new Button("HeuristicTwo");
+	UserInterface UI = new UserInterface();
+
+    
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		launch(args);
@@ -95,7 +100,17 @@ public class JavaFXTemplate extends Application {
 
 	    gPane.setAlignment(Pos.CENTER);
 		
+	    HBox gameScene = new HBox();
+
+	    gameScene.getChildren().addAll(heu1,heu2);
+	    gameScene.setSpacing(30);
+	    gameScene.setAlignment(Pos.CENTER);
 	    
+	    VBox vb1 = new VBox();
+	    vb1.getChildren().addAll(gPane,gameScene);
+	    vb1.setSpacing(70);
+	    
+	    vb1.setAlignment(Pos.CENTER);
 	    
 //		
 //		Board[0][0].value = puzzlearray[0];		
@@ -140,7 +155,7 @@ public class JavaFXTemplate extends Application {
 		primaryStage.show();
 		
 		Thread t = new Thread(()->{
-			UserInterface UI = new UserInterface();
+			
 			puzzlearray = UI.getPuzzle();
 			b1.setText(Integer.toString(puzzlearray[0]));
 			b2.setText(Integer.toString(puzzlearray[1]));
@@ -158,23 +173,55 @@ public class JavaFXTemplate extends Application {
 			b14.setText(Integer.toString(puzzlearray[12]));
 			b15.setText(Integer.toString(puzzlearray[13]));
 			b16.setText(Integer.toString(puzzlearray[14]));
+			
+
+		//	System.exit(1);
+			
 		});
 		t.start();
 		
 //		Thread t = new Thread(()-> {A_IDS_A_15solver ids = new A_IDS_A_15solver();});
 //		t.start();
 		
+		
 		startButton.setOnAction(event->{
 			
-// 0 14 13 12 15 9 5 8 11 7 4 1 3 10 6 2			
+// 0 14 13 12 15 9 5 8 11 7 4 1 3 10 6 2
 			
 			
-			Scene scene2 = new Scene(gPane,700,700);
+			
+			Scene scene2 = new Scene(vb1,700,700);
 			primaryStage.setScene(scene2);
 			primaryStage.show();
 			
 		});
-
+		
+		heu1.setOnAction(event->{
+			
+			A_IDS_A_15solver solver = new  A_IDS_A_15solver();
+			
+			Node newState = new Node(UI.getPuzzle());
+			newState.setDepth(0);
+			
+			solver.A_Star(newState,"heuristicOne");
+			
+			System.out.println("\nThanks for using me to solve your 15 puzzle......Goodbye");	
+			
+		});
+		
+		
+		heu2.setOnAction(event->{
+			
+			A_IDS_A_15solver solver = new  A_IDS_A_15solver();
+			
+			Node newState = new Node(UI.getPuzzle());
+			newState.setDepth(0);
+			
+			solver.A_Star(newState,"heuristicTwo");
+			
+			System.out.println("\nThanks for using me to solve your 15 puzzle......Goodbye");	
+			
+		});
 		
 
 

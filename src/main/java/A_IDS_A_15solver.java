@@ -9,23 +9,23 @@ public class A_IDS_A_15solver {
 
 public A_IDS_A_15solver(){
 		
-		UserInterface puzzle = new UserInterface();			//class for reading in puzzle from user
-		
-		Node startState = new Node(puzzle.getPuzzle());		//node contains the start state of puzzle
-		
-		startState.setDepth(0);
-				
-		System.out.println("\nStarting A* Search with heuristic #1....This may take a while\n\n");
-		
-		A_Star(startState, "heuristicOne");							//A* search with heuristic 1 (misplaced tiles)
-		
-		System.out.println("\nStarting A* Search with heuristic #2....This may take a while\n\n");
-		
-		A_Star(startState, "heuristicTwo");							//A* search with heuristic 2 (manhattan)
-		
-		
-		System.out.println("\nThanks for using me to solve your 15 puzzle......Goodbye");
-		System.exit(1);
+//		UserInterface puzzle = new UserInterface();			//class for reading in puzzle from user
+//		
+//		Node startState = new Node(puzzle.getPuzzle());		//node contains the start state of puzzle
+//		
+//		startState.setDepth(0);
+//				
+//		System.out.println("\nStarting A* Search with heuristic #1....This may take a while\n\n");
+//		
+//		A_Star(startState, "heuristicOne");							//A* search with heuristic 1 (misplaced tiles)
+//		
+//		System.out.println("\nStarting A* Search with heuristic #2....This may take a while\n\n");
+//		
+//		A_Star(startState, "heuristicTwo");							//A* search with heuristic 2 (manhattan)
+//		
+//		
+//		System.out.println("\nThanks for using me to solve your 15 puzzle......Goodbye");
+//		System.exit(1);
 		
 	}
 
